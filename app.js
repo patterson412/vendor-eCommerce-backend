@@ -6,13 +6,11 @@ const cors = require('cors');
 const connectDB = require('./config/database');
 const config = require('./config/config');
 const fs = require('fs');
-const bcrypt = require('bcrypt');
 const seedData = require('./seedData');
 
 // Import routes
 const authRoutes = require('./routes/authRoutes');
 const productRoutes = require('./routes/productRoutes');
-const { productService } = require('./services');
 
 const app = express();
 const PORT = config.server.port;
@@ -47,6 +45,7 @@ const startServer = async () => {
         // Connect to database
         await connectDB();
 
+        // Seeding sample data
         await seedData();
 
         // Create uploads directory if it doesn't exist
@@ -58,7 +57,7 @@ const startServer = async () => {
         // Start the server
         app.listen(PORT, () => {
             console.log(`✨ Server is running on port ${PORT}`);
-            console.log(`🌍 Environment: ${process.env.NODE_ENV || 'development'}`);
+            console.log(`🌍 Environment: ${config.server.port || 'development'}`);
         });
     } catch (error) {
         console.error('Failed to start server:', error);
