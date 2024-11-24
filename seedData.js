@@ -34,6 +34,7 @@ const seedData = async () => {
                 description: 'Set of 4 smooth-writing pens in beautiful pastel colors',
                 sku: generateSKU(),
                 quantity: 100,
+                price: 12.99,
                 userId: vendorUser._id,
                 imageUrl: 'product-img-1.png'
             },
@@ -42,6 +43,7 @@ const seedData = async () => {
                 description: 'High-quality hardcover notebooks with ribbon bookmarks',
                 sku: generateSKU(),
                 quantity: 50,
+                price: 24.99,  
                 userId: vendorUser._id,
                 imageUrl: 'product-img-2.png'
             },
@@ -50,6 +52,7 @@ const seedData = async () => {
                 description: 'Beautiful spiral-bound planner with floral design and gold accents',
                 sku: generateSKU(),
                 quantity: 75,
+                price: 19.99,  
                 userId: vendorUser._id,
                 imageUrl: 'product-img-3.png'
             },
@@ -58,6 +61,7 @@ const seedData = async () => {
                 description: 'Set of minimalist notebooks in earth tones',
                 sku: generateSKU(),
                 quantity: 60,
+                price: 29.99,  
                 userId: vendorUser._id,
                 imageUrl: 'product-img-4.png'
             },
@@ -66,6 +70,7 @@ const seedData = async () => {
                 description: 'Complete stationery set with notebook and art supplies',
                 sku: generateSKU(),
                 quantity: 40,
+                price: 39.99,  
                 userId: vendorUser._id,
                 imageUrl: 'product-img-5.png'
             }
@@ -78,6 +83,7 @@ const seedData = async () => {
                 description: productData.description,
                 sku: productData.sku,
                 quantity: productData.quantity,
+                price: productData.price,  
                 userId: productData.userId
             });
 
@@ -88,7 +94,7 @@ const seedData = async () => {
                 isPrimary: true
             });
 
-            console.log(`Created product: ${product.name} (SKU: ${product.sku}) with image by vendor: ${vendorUser.name}`);
+            console.log(`Created product: ${product.name} (SKU: ${product.sku}) with price: $${product.price} with image by vendor: ${vendorUser.name}`);
         }
 
         console.log('Seed data creation completed successfully');

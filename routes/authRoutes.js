@@ -29,8 +29,8 @@ router.post('/login', async (req, res) => {
 
             console.log('Authentication successful');
 
-            const token = jwt.sign({ id: user._id }, config.jwt.secret, { expiresIn: config.jwt.expiresIn });
-            res.cookie('token', token, { httpOnly: true, secure: process.env.NODE_ENV !== 'development' });
+            const token = jwt.sign({ id: user._id.toString() }, config.jwt.secret, { expiresIn: config.jwt.expiresIn });
+            res.cookie('token', token, { httpOnly: true, secure: process.env.NODE_ENV !== 'development', expires: new Date(Date.now() + 24 * 60 * 60 * 1000) });
             return res.status(200).json({ msg: 'Login successful' });
         });
 

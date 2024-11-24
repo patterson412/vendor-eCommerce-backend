@@ -22,11 +22,15 @@ class ProductService {
     // Get all products
     async getAllProducts(filters = {}, sort = {}, limit = 10, skip = 0) {
         try {
-            return await Product.find(filters)
-                .populate('userId', '-password')
-                .sort(sort)
-                .limit(limit)
-                .skip(skip);
+            const [products, total] = await Promise.all([
+                Product.find(filters)
+                    .populate('userId', '-password')
+                    .sort(sort)
+                    .limit(limit)
+                    .skip(skip),
+                Product.countDocuments(filters)
+            ]);
+            return { products, total };
         } catch (error) {
             throw error;
         }

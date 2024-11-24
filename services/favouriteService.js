@@ -74,6 +74,24 @@ class FavouriteService {
             throw error;
         }
     }
+
+    // Delete all favourites for a product
+    async deleteAllFromFavourites(productId) {
+        try {
+            return await Favourite.deleteMany({ productId });
+        } catch (error) {
+            throw error;
+        }
+    }
+
+    // Check if product exists in favourites
+    async existsInFavourites(productId) {
+        try {
+            return (await Favourite.exists({ productId })) !== null;
+        } catch (error) {
+            throw error;
+        }
+    }
 }
 
 module.exports = new FavouriteService();

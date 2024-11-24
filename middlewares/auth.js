@@ -4,6 +4,7 @@ const { Strategy: JwtStrategy } = require('passport-jwt');
 const { ExtractJwt } = require('passport-jwt');
 const { userService } = require('../services');
 const config = require('../config/config');
+const { ObjectId } = require('mongodb');
 
 const cookieExtractor = (req) => {
     try {
@@ -27,7 +28,7 @@ passport.use(
     new JwtStrategy(options, async (jwtPayload, done) => {
         try {
             // Find user by id from JWT payload
-            const user = await userService.getUserById(jwtPayload.id);
+            const user = await userService.getUserById(new ObjectId(jwtPayload.id));
 
             if (!user) {
                 return done(null, false);
