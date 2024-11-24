@@ -78,6 +78,14 @@ class ProductImageService {
             throw error;
         }
     }
+
+    async updateImage(imageId, imageData) {
+        try {
+            return await ProductImage.findByIdAndUpdate(imageId, imageData, { new: true });
+        } catch (error) {
+            throw error;
+        }
+    }
 }
 
 module.exports = new ProductImageService();

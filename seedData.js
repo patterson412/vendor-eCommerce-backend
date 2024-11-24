@@ -8,16 +8,6 @@ const generateSKU = () => {
 
 const seedData = async () => {
     try {
-        // Create admin user
-        const adminUser = await userService.createUser({
-            name: 'Admin User',
-            email: 'admin@example.com',
-            password: await bcrypt.hash('admin123', 10),
-            role: 'admin'
-        });
-
-        console.log('Admin user created:', adminUser.email);
-
         // Create a vendor user
         const vendorUser = await userService.createUser({
             name: 'Test Vendor',
@@ -43,7 +33,7 @@ const seedData = async () => {
                 description: 'High-quality hardcover notebooks with ribbon bookmarks',
                 sku: generateSKU(),
                 quantity: 50,
-                price: 24.99,  
+                price: 24.99,
                 userId: vendorUser._id,
                 imageUrl: 'product-img-2.png'
             },
@@ -52,7 +42,7 @@ const seedData = async () => {
                 description: 'Beautiful spiral-bound planner with floral design and gold accents',
                 sku: generateSKU(),
                 quantity: 75,
-                price: 19.99,  
+                price: 19.99,
                 userId: vendorUser._id,
                 imageUrl: 'product-img-3.png'
             },
@@ -61,7 +51,7 @@ const seedData = async () => {
                 description: 'Set of minimalist notebooks in earth tones',
                 sku: generateSKU(),
                 quantity: 60,
-                price: 29.99,  
+                price: 29.99,
                 userId: vendorUser._id,
                 imageUrl: 'product-img-4.png'
             },
@@ -70,7 +60,7 @@ const seedData = async () => {
                 description: 'Complete stationery set with notebook and art supplies',
                 sku: generateSKU(),
                 quantity: 40,
-                price: 39.99,  
+                price: 39.99,
                 userId: vendorUser._id,
                 imageUrl: 'product-img-5.png'
             }
@@ -83,7 +73,7 @@ const seedData = async () => {
                 description: productData.description,
                 sku: productData.sku,
                 quantity: productData.quantity,
-                price: productData.price,  
+                price: productData.price,
                 userId: productData.userId
             });
 

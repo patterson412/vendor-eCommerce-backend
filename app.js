@@ -11,7 +11,7 @@ const seedData = require('./seedData');
 // Import routes
 const authRoutes = require('./routes/authRoutes');
 const productRoutes = require('./routes/productRoutes');
-
+const userRoutes = require('./routes/userRoutes');
 const app = express();
 const PORT = config.server.port;
 
@@ -31,6 +31,7 @@ app.use('/uploads', express.static(path.join(__dirname, 'uploads')));
 // Routes
 app.use('/api/auth', authRoutes);
 app.use('/api/products', productRoutes);
+app.use('/api/user', userRoutes);
 
 // Basic error handler
 app.use((err, req, res, next) => {

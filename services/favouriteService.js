@@ -30,10 +30,12 @@ class FavouriteService {
 
             if (existing) {
                 await Favourite.findByIdAndDelete(existing._id);
+                console.log('Removed from favourites');
                 return { isFavourited: false, message: 'Removed from favourites' };
             }
 
             await Favourite.create({ userId, productId });
+            console.log('Added to favourites');
             return { isFavourited: true, message: 'Added to favourites' };
         } catch (error) {
             throw error;
